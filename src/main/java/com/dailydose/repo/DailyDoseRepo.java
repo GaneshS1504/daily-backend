@@ -137,7 +137,7 @@ public class DailyDoseRepo {
 		query.addCriteria(Criteria.where("category").is(category)
 				.and("link").is(link));
 		
-		query.fields().include("postId").include("title")
+		query.fields().include("postId").include("title").include("category")
 		.include("bannerImage").include("author").include("postedDate").include("desc")
 	    .exclude("_id");
 		
@@ -167,6 +167,22 @@ public class DailyDoseRepo {
 		query.with(Sort.by(Sort.Direction.DESC,"_id"));
 		query.fields().include("postId").include("category")
 		.include("link").include("title").include("topNewsImage")
+			.include("postedDate").include("shortDesc").include("author")
+		    .exclude("_id");
+		
+		query.limit(5);
+		
+		return mongoTemplate.find(query, FinalPosts.class);
+		
+	}
+	
+	public List<FinalPosts> getTravelPosts(){
+		
+		Query query = new Query();
+		query.addCriteria(Criteria.where("category").is("travel"));
+		query.with(Sort.by(Sort.Direction.DESC,"_id"));
+		query.fields().include("postId").include("category")
+		.include("link").include("title").include("bannerImage")
 			.include("postedDate").include("shortDesc").include("author")
 		    .exclude("_id");
 		

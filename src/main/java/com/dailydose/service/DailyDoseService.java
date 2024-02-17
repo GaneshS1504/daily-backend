@@ -91,6 +91,12 @@ public class DailyDoseService {
 		
 		postsResponse.put("topPosts", topPostsDto);
 		
+		List<FinalPosts> travelPostList = dailyDoseRepo.getTravelPosts();
+		List<LatestPostsDto> travelPostsDto=objectMapper.convertValue(travelPostList, new TypeReference<List<LatestPostsDto>>() {
+		});
+		
+		postsResponse.put("travelPosts", travelPostsDto);
+		
 		return postsResponse;
 	}
 	

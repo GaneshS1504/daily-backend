@@ -5,6 +5,7 @@ public class ContentPageDto {
 	
 	private Long postId;
 	private String title;
+	private String category;
 	private String bannerImage;
 	private String desc;
 	private String author;
@@ -15,7 +16,7 @@ public class ContentPageDto {
 	}
 
 	public ContentPageDto(Long postId, String title, String bannerImage, String desc, String author,
-			String postedDate) {
+			String postedDate,String category) {
 		super();
 		this.postId = postId;
 		this.title = title;
@@ -23,6 +24,7 @@ public class ContentPageDto {
 		this.desc = desc;
 		this.author = author;
 		this.postedDate = postedDate;
+		this.category = category;
 	}
 
 	public Long getPostId() {
@@ -72,13 +74,19 @@ public class ContentPageDto {
 	public void setPostedDate(String postedDate) {
 		this.postedDate = postedDate;
 	}
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
 
 	@Override
 	public String toString() {
-		return "ContentPageDto [postId=" + postId + ", title=" + title + ", bannerImage=" + bannerImage + ", desc="
-				+ desc + ", author=" + author + ", postedDate=" + postedDate + "]";
+		return "ContentPageDto [postId=" + postId + ", title=" + title + ", category=" + category + ", bannerImage="
+				+ bannerImage + ", desc=" + desc + ", author=" + author + ", postedDate=" + postedDate + "]";
 	}
-	
-	
-	
+		
 }
